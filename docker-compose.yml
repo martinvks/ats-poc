@@ -1,0 +1,18 @@
+version: '3.9'
+services:
+  frontend:
+    image: "frontend_ats"
+    ports:
+      - "80:8080"
+  backend:
+    image: "backend_spring-boot-tomcat"
+    expose:
+      - "8081"
+  tcpdump:
+    image: nicolaka/netshoot
+    depends_on:
+      - backend
+    command: tcpdump -i eth0 -w /capture/backend.pcap port 8081
+    network_mode: service:backend
+    volumes:
+      - $PWD/capture:/capture

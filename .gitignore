@@ -1,0 +1,13 @@
+# Compiled class file
+*.class
+
+# Package Files #
+*.jar
+
+target
+.idea
+capture
+node_modules
+*.iml
+.env
+.DS_STORE
